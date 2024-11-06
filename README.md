@@ -1,16 +1,32 @@
-# baca_berita
+# Baca Berita - Portal Berita
 
-A new Flutter project.
+**Baca Berita** adalah aplikasi *portal berita* yang dikembangkan menggunakan **Flutter**. Aplikasi ini memungkinkan pengguna untuk login, membaca berita, menambah berita, dan logout. *Baca Berita* dirancang untuk memberikan pengalaman membaca berita yang cepat dan mudah bagi pengguna.
 
-## Getting Started
+## Fitur Aplikasi
 
-This project is a starting point for a Flutter application.
+- **Login**: Pengguna dapat login untuk mengakses fitur tambahan di aplikasi.
+- **Mendapatkan Data Berita**: Aplikasi menampilkan berita terbaru dari berbagai sumber.
+- **Membaca Berita**: Pengguna dapat membuka dan membaca artikel berita secara penuh.
+- **Menambah Berita**: Pengguna yang memiliki hak akses dapat menambah berita baru ke dalam aplikasi.
+- **Logout**: Pengguna dapat logout dari aplikasi untuk mengamankan akun mereka.
 
-A few resources to get you started if this is your first Flutter project:
+## Teknologi yang Digunakan
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Flutter**: Framework utama untuk membangun aplikasi mobile multiplatform.
+- **Dart**: Bahasa pemrograman yang digunakan dengan Flutter.
+- **Backend/API**: Tersedia backend untuk menyimpan dan mengelola data berita serta autentikasi pengguna.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Persiapan dan Instalasi
+
+### Prasyarat
+
+Pastikan sudah menginstall:
+- [Flutter SDK](https://flutter.dev/docs/get-started/install)
+- [Android Studio](https://developer.android.com/studio) atau [Visual Studio Code](https://code.visualstudio.com/) dengan plugin Flutter
+
+### Langkah Instalasi
+
+1. Clone repositori ini:
+   ```bash
+   git clone https://github.com/username/BacaBerita.git
+   cd BacaBerita
