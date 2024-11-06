@@ -1,4 +1,4 @@
-# Baca Berita - Portal Berita
+# Baca Berita - Portal Berita (Flutter)
 
 **Baca Berita** adalah aplikasi *portal berita* yang dikembangkan menggunakan **Flutter**. Aplikasi ini memungkinkan pengguna untuk login, membaca berita, menambah berita, dan logout. *Baca Berita* dirancang untuk memberikan pengalaman membaca berita yang cepat dan mudah bagi pengguna.
 
