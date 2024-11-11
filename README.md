@@ -1,13 +1,24 @@
-# Baca Berita - Portal Berita (Flutter)
+# VIGENSIA_Baca Berita / Portal Berita Mobile (Flutter)
 
-**Baca Berita** adalah aplikasi *portal berita* yang dikembangkan menggunakan **Flutter**. Aplikasi ini memungkinkan pengguna untuk login, membaca berita, menambah berita, dan logout. *Baca Berita* dirancang untuk memberikan pengalaman membaca berita yang cepat dan mudah bagi pengguna.
+**VIGENSIA_Baca Berita** adalah aplikasi *portal berita* yang dikembangkan menggunakan **Flutter**. Aplikasi ini memungkinkan pengguna untuk login, membaca berita, menambah berita, dan logout. *VIGENSIA_Baca Berita* dirancang untuk memberikan pengalaman membaca berita yang cepat dan mudah bagi pengguna.
+
+## Cara Penggunaan Fitur Tambah Berita
+
+Untuk mendapatkan fitur tambah berita pada aplikasi, pengguna harus memiliki hak akses untuk fitur tersebut.
+Yaitu **Admin**.
+
+Berikut adalah akun admin:
+
+Email : admin@mail.com
+password : password
 
 ## Fitur Aplikasi
 
-- **Login**: Pengguna dapat login untuk mengakses fitur tambahan di aplikasi.
+- **Login**: Pengguna dapat login untuk mengakses fitur di aplikasi.
+- **Register**: Pengguna dapat register untuk membuat akun.
 - **Mendapatkan Data Berita**: Aplikasi menampilkan berita terbaru dari berbagai sumber.
 - **Membaca Berita**: Pengguna dapat membuka dan membaca artikel berita secara penuh.
-- **Menambah Berita**: Pengguna yang memiliki hak akses dapat menambah berita baru ke dalam aplikasi.
+- **Menambah Berita**: Pengguna yang memiliki hak akses (Admin) dapat menambah berita baru ke dalam aplikasi.
 - **Logout**: Pengguna dapat logout dari aplikasi untuk mengamankan akun mereka.
 
 ## Teknologi yang Digunakan

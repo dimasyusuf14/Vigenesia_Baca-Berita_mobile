@@ -82,7 +82,7 @@ class LoginPage extends StatelessWidget {
                       controller: controller.emailController.value,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                        labelText: "NIM dan Email",
+                        labelText: "Email",
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(9),
                         ),
