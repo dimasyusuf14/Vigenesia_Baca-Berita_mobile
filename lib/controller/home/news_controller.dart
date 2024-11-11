@@ -1,18 +1,29 @@
+// ignore_for_file: avoid_print
+
+import 'dart:io';
+
 import 'package:baca_berita/model/home/home_model.dart';
+import 'package:baca_berita/pages/main/main_page.dart';
 import 'package:baca_berita/services/api_services.dart';
 import 'package:baca_berita/services/utilities/api_constant.dart';
 import 'package:baca_berita/services/utilities/utilities.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart';
 
 class NewsController extends GetxController {
   var loadingFetchNews = DataLoad.done.obs;
   var listNews = <NewsModel>[].obs;
   var selectedDate = DateTime.now().obs;
-  var selectedImage = ''.obs; // To store selected image path
+  // var selectedImage = ''.obs;
+  Rx<File?> selectedImage = Rx<File?>(null);
+  var isLoading = false.obs;
+  // final ImagePicker _picker = ImagePicker();
+  final APIServices _apiService = APIServices();
 
-  final ImagePicker _picker = ImagePicker();
+  var titleController = TextEditingController().obs;
+  var descriptionController = TextEditingController().obs;
 
   @override
   void onInit() {
@@ -20,11 +31,11 @@ class NewsController extends GetxController {
     super.onInit();
   }
 
-  // Method to pick an image from the gallery
   Future<void> pickImage() async {
-    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
-      selectedImage.value = pickedFile.path;
+      selectedImage.value = File(pickedFile.path);
     }
   }
 
@@ -63,41 +74,69 @@ class NewsController extends GetxController {
     }
   }
 
-  // Add news with automatic createdAt date and cover image
-  Future<void> addNews(String title, String description) async {
-    loadingFetchNews.value = DataLoad.loading;
+  void resetForm() {
+    titleController.value.clear(); // Reset judul
+    descriptionController.value.clear(); // Reset artikel
+    selectedImage.value = null; // Reset gambar
+  }
 
-    // Create the news model with current date as createdAt
-    NewsModel newNews = NewsModel(
-      id: 0, // This would be handled by backend typically
-      cover: selectedImage.value,
-      title: title,
-      description: description,
-      createdAt: DateTime.now(), // Set createdAt to now
-      updatedAt: DateTime.now(),
-      coverUrl: '', // URL is typically set by backend after upload
-    );
+  bool _validateForm() {
+    if (selectedImage.value == null || // Validasi agar gambar tidak null
+        titleController.value.text.isEmpty ||
+        descriptionController.value.text.isEmpty) {
+      Get.snackbar('Error', 'Semua field harus diisi');
+      return false;
+    }
+    return true;
+  }
 
-    try {
-      var response = await APIServices.api(
-        endPoint: APIEndpoint.news,
-        type: APIMethod.post,
-        withToken: true,
-        requestBodyMap: newNews.toJson(),
+  void clearForm() {
+    selectedImage.value = null;
+    titleController.value.clear(); // Reset judul
+    descriptionController.value.clear();
+  }
+
+  Future<void> insertBerita() async {
+    Helper.loadingScreen();
+    if (_validateForm()) {
+      isLoading.value = true;
+
+      // Pastikan `selectedImage` sudah memiliki file gambar yang dipilih
+      if (selectedImage.value == null) {
+        Get.snackbar('Error', 'Silakan pilih gambar');
+        isLoading.value = false;
+        return;
+      }
+
+      // Buat objek berita dengan menggunakan selectedKategoriId dan path gambar
+      final berita = NewsModel(
+        id: 0,
+        title: titleController.value.text,
+        description: descriptionController.value.text,
+        cover: basename(
+            selectedImage.value!.path), // Pastikan ini adalah nama file gambar
+        createdAt: DateTime.now(),
+        updatedAt: DateTime.now(),
       );
 
-      if (response['success'] == true) {
-        newNews.coverUrl =
-            response['data']['cover_url'] ?? ''; // Get URL from the response
-        getProductList();
-        Get.snackbar("Success", "News added successfully!");
-      } else {
-        Get.snackbar("Error", "Failed to add news.");
+      // Cetak data yang akan dikirim
+      print('Data yang dikirim:');
+      print('Judul: ${berita.title}');
+      print('Artikel: ${berita.description}');
+      print('Path Gambar: ${berita.cover}');
+
+      try {
+        await _apiService.insertBerita(berita, selectedImage.value);
+        Get.offAll(() => MainPage());
+        clearForm();
+
+        Get.snackbar('Success', 'Berita berhasil disimpan');
+        // clearForm();
+      } catch (e) {
+        Get.snackbar('Error', 'Gagal menyimpan berita: $e');
+      } finally {
+        isLoading.value = false;
       }
-    } catch (e) {
-      Get.snackbar("Error", "Failed to add news. Please try again.");
-    } finally {
-      loadingFetchNews.value = DataLoad.done;
     }
   }
 

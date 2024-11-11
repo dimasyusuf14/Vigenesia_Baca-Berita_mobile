@@ -1,7 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:baca_berita/controller/login/login_controller.dart';
+import 'package:baca_berita/controller/auth/login_controller.dart';
 import 'package:baca_berita/services/utilities/asset_constant.dart';
+import 'package:baca_berita/services/utilities/utilities.dart';
 import 'package:baca_berita/widgets/button/button_list_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,7 +17,7 @@ class ProfilePage extends StatelessWidget {
           height: Get.width * 0.7,
           width: Get.width,
           decoration: BoxDecoration(
-            color: Color(0XFF5878D9),
+            color: kColorSecondary,
             borderRadius: BorderRadius.circular(10),
           ),
           child: Padding(

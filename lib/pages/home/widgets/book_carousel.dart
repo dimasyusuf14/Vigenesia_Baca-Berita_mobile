@@ -80,8 +80,8 @@ class CarouselBook extends StatelessWidget {
                           color: Colors.black.withOpacity(0.4),
                           borderRadius: BorderRadius.circular(12),
                           gradient: LinearGradient(
-                            begin: Alignment.center,
-                            end: Alignment.topCenter,
+                            begin: Alignment.bottomCenter,
+                            end: Alignment.center,
                             colors: [
                               Colors.black.withOpacity(1),
                               Colors.transparent,

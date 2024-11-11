@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:baca_berita/controller/home/news_controller.dart';
+import 'package:baca_berita/services/utilities/utilities.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
@@ -34,17 +35,22 @@ class DetailPage extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.4),
-                  borderRadius: BorderRadius.circular(12),
-                  gradient: LinearGradient(
-                    begin: Alignment.center,
-                    end: Alignment.topCenter,
-                    colors: [
-                      Colors.black.withOpacity(1),
-                      Colors.transparent,
-                    ],
+              Positioned.fill(
+                child: Container(
+                  height: 50,
+                  decoration: BoxDecoration(
+                    // color: Colors.black.withOpacity(0.4),
+                    borderRadius: BorderRadius.circular(12),
+                    gradient: LinearGradient(
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.center,
+                      colors: [
+                        Colors.black
+                            .withOpacity(0.6), // Membuat hitam lebih pekat
+                        Colors.black.withOpacity(0.5), // Transisi ke transparan
+                        Colors.transparent,
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -60,6 +66,7 @@ class DetailPage extends StatelessWidget {
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 24,
+                        color: Colors.white,
                       ),
                     ),
                     Row(
@@ -69,6 +76,7 @@ class DetailPage extends StatelessWidget {
                           style: const TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 16,
+                            color: Colors.white,
                           ),
                         ),
                         SizedBox(
@@ -78,7 +86,7 @@ class DetailPage extends StatelessWidget {
                           DateFormat.yMMMd().format(news["created_at"]),
                           style: TextStyle(
                             fontSize: 14,
-                            color: Colors.grey.shade600,
+                            color: kColorPrimary,
                             fontWeight: FontWeight.w500,
                           ),
                           maxLines: 1,

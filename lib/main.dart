@@ -1,7 +1,6 @@
-import 'package:baca_berita/pages/login/login_page.dart';
+import 'package:baca_berita/pages/auth/login_page.dart';
 import 'package:baca_berita/routes/page_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -19,14 +18,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    //   statusBarColor: Colors.transparent,
-    //   statusBarIconBrightness: Brightness.dark,
-    // ));
-    // SystemChrome.setPreferredOrientations([
-    //   DeviceOrientation.portraitUp,
-    //   DeviceOrientation.portraitDown,
-    // ]);
+    
     return RefreshConfiguration(
       footerBuilder: () => const ClassicFooter(
         loadingIcon: SizedBox(

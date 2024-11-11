@@ -29,8 +29,12 @@ class LoginController extends GetxController {
       if (data['success'] == true) {
         Get.back();
         var token = data['data']['access_token'];
+        var role = data['data']['role'];
+
         final box = GetStorage();
         await box.write("token", token);
+        await box.write("role", role);
+
         Get.offAllNamed(RouteName.mainPage);
       } else {
         Get.back();

@@ -161,7 +161,7 @@ class HomePage extends StatelessWidget {
                                                     textStyle: TextStyle(
                                                       fontSize: 14,
                                                       fontWeight:
-                                                          FontWeight.bold,
+                                                          FontWeight.w500,
                                                       color:
                                                           Colors.grey.shade600,
                                                     ),
@@ -175,7 +175,7 @@ class HomePage extends StatelessWidget {
                                                     style: TextStyle(
                                                       fontSize: 14,
                                                       color:
-                                                          Colors.grey.shade600,
+                                                          kColorPrimary,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                     ),

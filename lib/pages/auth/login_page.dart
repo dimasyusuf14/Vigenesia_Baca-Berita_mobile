@@ -1,8 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:baca_berita/controller/login/login_controller.dart';
+import 'package:baca_berita/controller/auth/login_controller.dart';
+import 'package:baca_berita/routes/route_name.dart';
+import 'package:baca_berita/services/utilities/asset_constant.dart';
 import 'package:baca_berita/widgets/button/button_primary.dart';
+import 'package:baca_berita/widgets/button/button_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import '../../services/utilities/utilities.dart';
@@ -17,41 +21,36 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: kColorSecondary,
-      body: Stack(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            // top: Get.height * 0.3,
-            top: MediaQuery.of(context).viewInsets.bottom > 0
-                ? Get.height * 0.1
-                : Get.height * 0.3,
+          Padding(
+            padding: const EdgeInsets.only(top: 30),
+            child: SizedBox(
+              height: Get.height * 0.38,
+              width: Get.width * 0.75,
+              child: SvgPicture.asset(
+                AssetConstant.icLogin,
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Expanded(
             child: Container(
-              padding:
-                  EdgeInsets.only(left: 30, right: 30, top: 60, bottom: 50),
+              padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: Color(0XFFF1F4FD),
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(15),
-                  topRight: Radius.circular(15),
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
                 ),
               ),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "MASUK",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-
                     Text.rich(
                       TextSpan(
                         children: const [
@@ -118,32 +117,26 @@ class LoginPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 15),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
-                          children: [
-                            Obx(
-                              () => Checkbox(
-                                value: controller.checkC.value,
-                                onChanged: (value) =>
-                                    controller.checkC.toggle(),
-                                activeColor: Color(0XFF445DCC),
-                              ),
-                            ),
-                            Text(
-                              "Remember Me?",
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.normal,
-                              ),
-                            ),
-                          ],
+                        Obx(
+                          () => Checkbox(
+                            value: controller.checkC.value,
+                            onChanged: (value) => controller.checkC.toggle(),
+                            activeColor: kColorPrimary,
+                          ),
+                        ),
+                        Text(
+                          "Remember Me?",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                          ),
                         ),
                       ],
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 15),
                     // Login Button
 
                     Buttonprimary(
@@ -167,18 +160,11 @@ class LoginPage extends StatelessWidget {
                             fontSize: 15,
                           ),
                         ),
-                        InkWell(
+                        Buttontext(
                           onTap: () {
-                            // Get.toNamed(RouteName.signUp);
+                            Get.toNamed(RouteName.signUp);
                           },
-                          child: Text(
-                            "Daftar",
-                            style: TextStyle(
-                              color: kColorSecondary,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 15,
-                            ),
-                          ),
+                          title: "Daftar",
                         ),
                       ],
                     ),
