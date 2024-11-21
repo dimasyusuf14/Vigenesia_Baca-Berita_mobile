@@ -23,7 +23,7 @@ class AssetConstant {
   static const String bgLogin = "assets/images/bg.png";
   static const String sampul1 = "assets/images/sampul1.png";
   static const String bgHomePage = "assets/images/bg_homepage.png";
-  static const String logoAlinea = "assets/images/logo_alinea.png";
+  static const String logo = "assets/images/img_logo.png";
   static const String coverHarryPoter = "assets/images/cover_harryPtr.png";
   static const String profilePict = "assets/images/profile_pict.jpg";
 }

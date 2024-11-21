@@ -1,4 +1,4 @@
-String kBaseUrl = "http://192.168.1.6:8000/api";
+String kBaseUrl = "https://yusuf.alinea-api.my.id/api";
 
 
 class APIEndpoint {

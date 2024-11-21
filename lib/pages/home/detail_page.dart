@@ -69,30 +69,18 @@ class DetailPage extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                    Row(
-                      children: [
-                        Text(
-                          news['author'] ?? 'Author Unknown',
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16,
-                            color: Colors.white,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          DateFormat.yMMMd().format(news["created_at"]),
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: kColorPrimary,
-                            fontWeight: FontWeight.w500,
-                          ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      DateFormat.yMMMd().format(news["created_at"]),
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: kColorPrimary,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ],
                 ),
@@ -124,13 +112,6 @@ class DetailPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
-                              "Sinopsis",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 24,
-                              ),
-                            ),
                             // const SizedBox(height: 10),
                             HtmlWidget(
                               news['description'] ??

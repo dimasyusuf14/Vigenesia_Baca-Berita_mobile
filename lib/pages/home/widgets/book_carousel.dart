@@ -35,6 +35,9 @@ class CarouselBook extends StatelessWidget {
             ),
           );
         } else {
+          // Batasi jumlah item carousel yang ditampilkan maksimal 10
+          final displayedNews = newsController.listNews.take(10).toList();
+
           return CarouselSlider(
             options: CarouselOptions(
               height: 250,
@@ -42,9 +45,7 @@ class CarouselBook extends StatelessWidget {
               autoPlay: true,
               autoPlayInterval: Duration(seconds: 3),
             ),
-            items: List.generate(newsController.listNews.length, (index) {
-              final news = newsController.listNews[index];
-
+            items: displayedNews.map((news) {
               return GestureDetector(
                 onTap: () {
                   Get.toNamed(
@@ -121,9 +122,9 @@ class CarouselBook extends StatelessWidget {
                             Text(
                               DateFormat.yMMMd().format(news.createdAt),
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: 16,
                                 color: Colors.white70,
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.w600,
                               ),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,

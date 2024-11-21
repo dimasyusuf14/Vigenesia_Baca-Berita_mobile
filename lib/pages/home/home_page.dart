@@ -35,12 +35,12 @@ class HomePage extends StatelessWidget {
             width: Get.width,
             child: Center(
               child: Text(
-                "Portal Berita",
+                "VIGENESIA",
                 style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Poppins',
-                ),
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Poppins',
+                    color: Colors.white),
               ),
             ),
           ),
@@ -153,31 +153,37 @@ class HomePage extends StatelessWidget {
                                                     overflow:
                                                         TextOverflow.ellipsis,
                                                   ),
-                                                  HtmlWidget(
-                                                    news.description.length >
-                                                            100
-                                                        ? "${news.description.substring(0, 85)}..."
-                                                        : news.description,
-                                                    textStyle: TextStyle(
-                                                      fontSize: 14,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      color:
-                                                          Colors.grey.shade600,
+                                                  SizedBox(
+                                                    height: 10,
+                                                  ),
+                                                  Container(
+                                                    constraints: BoxConstraints(maxHeight: 60),
+                                                    child: HtmlWidget(
+                                                      news.description.length >
+                                                              100
+                                                          ? "${news.description.substring(0, 85)}..."
+                                                          : news.description,
+                                                      textStyle: TextStyle(
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        color:
+                                                            Colors.grey.shade600,
+                                                      ),
+                                                      
                                                     ),
                                                   ),
                                                   SizedBox(
                                                     height: 25,
                                                   ),
                                                   Text(
-                                                    DateFormat.yMMMd().format(
-                                                        news.createdAt),
+                                                    DateFormat.yMMMd()
+                                                        .format(news.createdAt),
                                                     style: TextStyle(
                                                       fontSize: 14,
-                                                      color:
-                                                          kColorPrimary,
+                                                      color: kColorPrimary,
                                                       fontWeight:
-                                                          FontWeight.w500,
+                                                          FontWeight.w600,
                                                     ),
                                                     maxLines: 1,
                                                     overflow:

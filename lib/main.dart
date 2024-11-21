@@ -1,4 +1,5 @@
 import 'package:baca_berita/pages/auth/login_page.dart';
+import 'package:baca_berita/pages/splash/splash_screen.dart';
 import 'package:baca_berita/routes/page_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -34,14 +35,14 @@ class _MyAppState extends State<MyApp> {
         distance: 40,
       ),
       child: GetMaterialApp(
-        title: 'Ebook',
+        title: 'Vigenesia',
         getPages: PagesRoute.pages,
         theme: ThemeData(
             useMaterial3: true,
-            fontFamily: 'Inter',
+            fontFamily: 'Poppins',
             splashColor: Colors.transparent),
         debugShowCheckedModeBanner: false,
-        home: LoginPage(),
+        home: SplashScreen(),
       ),
     );
   }

@@ -8,7 +8,7 @@ import 'package:get_storage/get_storage.dart';
 
 class LoginController extends GetxController {
   var passController = TextEditingController(text: "password").obs;
-  var emailController = TextEditingController(text: "user@mail.com").obs;
+  var emailController = TextEditingController(text: "admin@mail.com").obs;
   var checkC = false.obs;
   var isHidden = false.obs;
 
