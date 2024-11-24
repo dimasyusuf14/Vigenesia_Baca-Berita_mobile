@@ -1,41 +1,125 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:baca_berita/controller/home/news_controller.dart';
 import 'package:baca_berita/routes/route_name.dart';
 import 'package:baca_berita/services/utilities/utilities.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:intl/intl.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+import 'package:shimmer/shimmer.dart';
 
-class CarouselBook extends StatelessWidget {
+class CarouselNews extends StatelessWidget {
   final NewsController newsController = Get.find<NewsController>();
 
-  CarouselBook({super.key});
+  CarouselNews({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       child: Obx(() {
         if (newsController.loadingFetchNews.value == DataLoad.loading) {
-          return Center(child: CircularProgressIndicator());
+          // Shimmer placeholder for loading
+          return CarouselSlider(
+            options: CarouselOptions(
+              height: 250,
+              aspectRatio: 0.95,
+              autoPlay: false,
+            ),
+            items: List.generate(
+              5, // Jumlah shimmer placeholder
+              (index) => Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8),
+                width: Get.width * 0.78,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Stack(
+                  children: [
+                    // Shimmer untuk gambar latar belakang
+                    Shimmer.fromColors(
+                      baseColor: Colors.grey.shade300,
+                      highlightColor: Colors.grey.shade100,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: Container(
+                          color: Colors.grey.shade300,
+                          width: double.infinity,
+                          height: double.infinity,
+                        ),
+                      ),
+                    ),
+                    // Shimmer untuk overlay (jika diperlukan)
+                    Positioned.fill(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.black.withOpacity(0.3),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                    ),
+                    // Shimmer untuk teks
+                    Positioned(
+                      bottom: 16,
+                      left: 16,
+                      right: 16,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // Placeholder untuk judul
+                          Shimmer.fromColors(
+                            baseColor: Colors.grey.shade300,
+                            highlightColor: Colors.grey.shade100,
+                            child: Container(
+                              width: Get.width * 0.7,
+                              height: 18,
+                              color: Colors.grey.shade300,
+                            ),
+                          ),
+                          const SizedBox(height: 16),
+                          // Placeholder untuk deskripsi
+                          Shimmer.fromColors(
+                            baseColor: Colors.grey.shade300,
+                            highlightColor: Colors.grey.shade100,
+                            child: Container(
+                              width: Get.width * 0.65,
+                              height: 60,
+                              color: Colors.grey.shade300,
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          // Placeholder untuk tanggal
+                          Shimmer.fromColors(
+                            baseColor: Colors.grey.shade300,
+                            highlightColor: Colors.grey.shade100,
+                            child: Container(
+                              width: Get.width * 0.4,
+                              height: 14,
+                              color: Colors.grey.shade300,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
         } else if (newsController.loadingFetchNews.value == DataLoad.failed) {
-          return Center(
+          return const Center(
             child: Text(
               "Failed to load data",
               style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
             ),
           );
         } else if (newsController.listNews.isEmpty) {
-          return Center(
+          return const Center(
             child: Text(
               "No data available",
               style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
             ),
           );
         } else {
-          // Batasi jumlah item carousel yang ditampilkan maksimal 10
           final displayedNews = newsController.listNews.take(10).toList();
 
           return CarouselSlider(
@@ -43,7 +127,7 @@ class CarouselBook extends StatelessWidget {
               height: 250,
               aspectRatio: 0.95,
               autoPlay: true,
-              autoPlayInterval: Duration(seconds: 3),
+              autoPlayInterval: const Duration(seconds: 3),
             ),
             items: displayedNews.map((news) {
               return GestureDetector(
@@ -100,28 +184,28 @@ class CarouselBook extends StatelessWidget {
                           children: [
                             Text(
                               news.title,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18,
                                 color: Colors.white,
                               ),
                               overflow: TextOverflow.ellipsis,
                             ),
-                            SizedBox(height: 8),
+                            const SizedBox(height: 8),
                             HtmlWidget(
                               news.description.length > 100
                                   ? "${news.description.substring(0, 100)}..."
                                   : news.description,
-                              textStyle: TextStyle(
+                              textStyle: const TextStyle(
                                 fontSize: 14,
-                                fontWeight: FontWeight.bold,
+                                fontWeight: FontWeight.w500,
                                 color: Colors.white70,
                               ),
                             ),
-                            SizedBox(height: 8),
+                            const SizedBox(height: 8),
                             Text(
                               DateFormat.yMMMd().format(news.createdAt),
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 16,
                                 color: Colors.white70,
                                 fontWeight: FontWeight.w600,

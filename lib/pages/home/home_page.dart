@@ -1,7 +1,5 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:baca_berita/controller/home/news_controller.dart';
-import 'package:baca_berita/pages/home/widgets/book_carousel.dart';
+import 'package:baca_berita/pages/home/widgets/news_carousel.dart';
 import 'package:baca_berita/routes/route_name.dart';
 import 'package:baca_berita/services/utilities/utilities.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +8,7 @@ import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -24,49 +23,49 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Column(
-        children: [
-          Container(
-            padding: EdgeInsets.only(top: 25),
-            color: Color(0XFFFF8A80),
-            height: Get.height * 0.1,
-            width: Get.width,
-            child: Center(
-              child: Text(
-                "VIGENESIA",
-                style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Poppins',
-                    color: Colors.white),
+    return RefreshIndicator(
+      onRefresh: _refreshData,
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.only(top: 25),
+              color: const Color(0XFFFF8A80),
+              height: Get.height * 0.1,
+              width: Get.width,
+              child: const Center(
+                child: Text(
+                  "VIGENESIA",
+                  style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Poppins',
+                      color: Colors.white),
+                ),
               ),
             ),
-          ),
-          Container(
-            color: Colors.white,
-            height: Get.height * 0.35,
-            width: Get.width,
-            child: CarouselBook(),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Row(
-              children: const [
-                Text(
-                  "Berita Terbaru",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
+            Container(
+              color: Colors.white,
+              height: Get.height * 0.35,
+              width: Get.width,
+              child: CarouselNews(),
             ),
-          ),
-          Expanded(
-            child: RefreshIndicator(
-              onRefresh: _refreshData,
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: Row(
+                children: [
+                  Text(
+                    "Berita Terbaru",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
               child: SingleChildScrollView(
                 child: Column(
                   children: [
@@ -74,10 +73,81 @@ class HomePage extends StatelessWidget {
                       () {
                         if (controller.loadingFetchNews.value ==
                             DataLoad.loading) {
-                          return CircularProgressIndicator();
+                          // Tampilkan shimmer di dalam container
+                          return ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: 5, // Jumlah shimmer
+                            padding: EdgeInsets.zero,
+                            itemBuilder: (context, index) {
+                              return Container(
+                                margin: const EdgeInsets.symmetric(vertical: 8),
+                                padding: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFFFFE4E1),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Row(
+                                  children: [
+                                    const SizedBox(width: 10),
+                                    Shimmer.fromColors(
+                                      baseColor: Colors.grey.shade300,
+                                      highlightColor: Colors.grey.shade100,
+                                      child: Container(
+                                        width: Get.width * 0.4,
+                                        height: Get.height * 0.2,
+                                        color: Colors.grey.shade300,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 10),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Shimmer.fromColors(
+                                            baseColor: Colors.grey.shade300,
+                                            highlightColor:
+                                                Colors.grey.shade100,
+                                            child: Container(
+                                              height: 20,
+                                              width: double.infinity,
+                                              color: Colors.grey.shade300,
+                                            ),
+                                          ),
+                                          const SizedBox(height: 10),
+                                          Shimmer.fromColors(
+                                            baseColor: Colors.grey.shade300,
+                                            highlightColor:
+                                                Colors.grey.shade100,
+                                            child: Container(
+                                              height: 35,
+                                              width: Get.width * 0.5,
+                                              color: Colors.grey.shade300,
+                                            ),
+                                          ),
+                                          const SizedBox(height: 10),
+                                          Shimmer.fromColors(
+                                            baseColor: Colors.grey.shade300,
+                                            highlightColor:
+                                                Colors.grey.shade100,
+                                            child: Container(
+                                              height: 15,
+                                              width: Get.width * 0.4,
+                                              color: Colors.amber.shade300,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          );
                         } else if (controller.loadingFetchNews.value ==
                             DataLoad.failed) {
-                          return Text(
+                          return const Text(
                             "FAILED",
                             style: TextStyle(
                               fontSize: 32.0,
@@ -97,7 +167,7 @@ class HomePage extends StatelessWidget {
                               itemBuilder: (context, index) {
                                 final news = controller.listNews[index];
                                 return Container(
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: Color(0xFFFFE4E1),
                                   ),
                                   child: Padding(
@@ -120,6 +190,7 @@ class HomePage extends StatelessWidget {
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
+                                        
                                         children: [
                                           ClipRRect(
                                             borderRadius:
@@ -131,7 +202,7 @@ class HomePage extends StatelessWidget {
                                               fit: BoxFit.cover,
                                             ),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 10,
                                           ),
                                           Expanded(
@@ -139,13 +210,13 @@ class HomePage extends StatelessWidget {
                                               height: Get.height * 0.2,
                                               child: Column(
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.start,
+                                                    MainAxisAlignment.center,
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
                                                     news.title,
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                       fontWeight:
                                                           FontWeight.bold,
                                                       fontSize: 18,
@@ -153,11 +224,13 @@ class HomePage extends StatelessWidget {
                                                     overflow:
                                                         TextOverflow.ellipsis,
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     height: 10,
                                                   ),
                                                   Container(
-                                                    constraints: BoxConstraints(maxHeight: 60),
+                                                    constraints:
+                                                        const BoxConstraints(
+                                                            maxHeight: 60),
                                                     child: HtmlWidget(
                                                       news.description.length >
                                                               100
@@ -167,19 +240,18 @@ class HomePage extends StatelessWidget {
                                                         fontSize: 14,
                                                         fontWeight:
                                                             FontWeight.w500,
-                                                        color:
-                                                            Colors.grey.shade600,
+                                                        color: Colors
+                                                            .grey.shade600,
                                                       ),
-                                                      
                                                     ),
                                                   ),
-                                                  SizedBox(
-                                                    height: 25,
+                                                  const SizedBox(
+                                                    height: 10,
                                                   ),
                                                   Text(
                                                     DateFormat.yMMMd()
                                                         .format(news.createdAt),
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                       fontSize: 14,
                                                       color: kColorPrimary,
                                                       fontWeight:
@@ -208,8 +280,8 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
