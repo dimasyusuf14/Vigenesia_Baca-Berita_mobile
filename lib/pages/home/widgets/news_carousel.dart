@@ -28,7 +28,7 @@ class CarouselNews extends StatelessWidget {
             items: List.generate(
               5, // Jumlah shimmer placeholder
               (index) => Container(
-                margin: const EdgeInsets.symmetric(horizontal: 8),
+                margin: const EdgeInsets.only(right: 8),
                 width: Get.width * 0.78,
                 padding: EdgeInsets.zero,
                 decoration: BoxDecoration(
