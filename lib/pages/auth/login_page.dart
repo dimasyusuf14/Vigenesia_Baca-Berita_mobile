@@ -83,6 +83,7 @@ class LoginPage extends StatelessWidget {
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                         labelText: "Email",
+                        hintStyle: TextStyle(fontWeight: FontWeight.normal),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(9),
                         ),

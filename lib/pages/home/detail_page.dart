@@ -27,7 +27,7 @@ class DetailPage extends StatelessWidget {
                 height: Get.height * 0.4,
                 width: Get.width,
                 decoration: BoxDecoration(
-                  color: const Color(0XFF445DCC),
+                  color: const Color(0XFFF1F4FD),
                   // borderRadius: BorderRadius.circular(10),
                 ),
                 child: Image.network(
@@ -91,10 +91,7 @@ class DetailPage extends StatelessWidget {
             child: Container(
               decoration: const BoxDecoration(
                 color: Color(0XFFF1F4FD),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
-                ),
+                
               ),
               child: Padding(
                 padding: const EdgeInsets.only(

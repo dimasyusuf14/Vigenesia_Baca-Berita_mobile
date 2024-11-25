@@ -1,4 +1,3 @@
-import 'package:baca_berita/pages/auth/login_page.dart';
 import 'package:baca_berita/pages/splash/splash_screen.dart';
 import 'package:baca_berita/routes/page_route.dart';
 import 'package:flutter/material.dart';
@@ -39,10 +38,10 @@ class _MyAppState extends State<MyApp> {
         getPages: PagesRoute.pages,
         theme: ThemeData(
             useMaterial3: true,
-            fontFamily: 'Poppins',
+            fontFamily: "Inter",
             splashColor: Colors.transparent),
         debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
+        home: const SplashScreen(),
       ),
     );
   }

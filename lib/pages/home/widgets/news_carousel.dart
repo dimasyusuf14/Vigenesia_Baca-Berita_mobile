@@ -30,6 +30,7 @@ class CarouselNews extends StatelessWidget {
               (index) => Container(
                 margin: const EdgeInsets.symmetric(horizontal: 8),
                 width: Get.width * 0.78,
+                padding: EdgeInsets.zero,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -86,7 +87,7 @@ class CarouselNews extends StatelessWidget {
                               color: Colors.grey.shade300,
                             ),
                           ),
-                          const SizedBox(height: 8),
+                          const SizedBox(height: 16),
                           // Placeholder untuk tanggal
                           Shimmer.fromColors(
                             baseColor: Colors.grey.shade300,
