@@ -21,7 +21,7 @@ class ShimmerBooksHomePage extends StatelessWidget {
           const SizedBox(width: 10),
           Shimmer.fromColors(
             baseColor: Colors.grey.shade300,
-            highlightColor: Colors.grey.shade100,
+            highlightColor: Colors.grey.shade50,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(9),
               child: Container(
@@ -40,7 +40,7 @@ class ShimmerBooksHomePage extends StatelessWidget {
                 Shimmer.fromColors(
                   baseColor: Colors.grey.shade300,
                   highlightColor:
-                      Colors.grey.shade100,
+                      Colors.grey.shade50,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(5),
                     child: Container(
@@ -54,7 +54,7 @@ class ShimmerBooksHomePage extends StatelessWidget {
                 Shimmer.fromColors(
                   baseColor: Colors.grey.shade300,
                   highlightColor:
-                      Colors.grey.shade100,
+                      Colors.grey.shade50,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(5),
                     child: Container(
@@ -68,7 +68,7 @@ class ShimmerBooksHomePage extends StatelessWidget {
                 Shimmer.fromColors(
                   baseColor: Colors.grey.shade300,
                   highlightColor:
-                      Colors.grey.shade100,
+                      Colors.grey.shade50,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(5),
                     child: Container(
@@ -100,7 +100,7 @@ class ShimmerCarouselBooks extends StatelessWidget {
         // Shimmer untuk gambar latar belakang
         Shimmer.fromColors(
           baseColor: Colors.grey.shade300,
-          highlightColor: Colors.grey.shade100,
+          highlightColor: Colors.grey.shade50,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(12),
             child: Container(
@@ -130,7 +130,7 @@ class ShimmerCarouselBooks extends StatelessWidget {
               // Placeholder untuk judul
               Shimmer.fromColors(
                 baseColor: Colors.grey.shade300,
-                highlightColor: Colors.grey.shade100,
+                highlightColor: Colors.grey.shade50,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(5),
                   child: Container(
@@ -144,7 +144,7 @@ class ShimmerCarouselBooks extends StatelessWidget {
               // Placeholder untuk deskripsi
               Shimmer.fromColors(
                 baseColor: Colors.grey.shade300,
-                highlightColor: Colors.grey.shade100,
+                highlightColor: Colors.grey.shade50,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(5),
                   child: Container(
@@ -158,7 +158,7 @@ class ShimmerCarouselBooks extends StatelessWidget {
               // Placeholder untuk tanggal
               Shimmer.fromColors(
                 baseColor: Colors.grey.shade300,
-                highlightColor: Colors.grey.shade100,
+                highlightColor: Colors.grey.shade50,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(5),
                   child: Container(
