@@ -1,6 +1,7 @@
 import 'package:baca_berita/controller/home/news_controller.dart';
 import 'package:baca_berita/routes/route_name.dart';
 import 'package:baca_berita/services/utilities/utilities.dart';
+import 'package:baca_berita/widgets/shimmer/shimmer_loading.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
@@ -34,75 +35,7 @@ class CarouselNews extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: Stack(
-                  children: [
-                    // Shimmer untuk gambar latar belakang
-                    Shimmer.fromColors(
-                      baseColor: Colors.grey.shade300,
-                      highlightColor: Colors.grey.shade100,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
-                        child: Container(
-                          color: Colors.grey.shade300,
-                          width: double.infinity,
-                          height: double.infinity,
-                        ),
-                      ),
-                    ),
-                    // Shimmer untuk overlay (jika diperlukan)
-                    Positioned.fill(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.3),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-                    ),
-                    // Shimmer untuk teks
-                    Positioned(
-                      bottom: 16,
-                      left: 16,
-                      right: 16,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // Placeholder untuk judul
-                          Shimmer.fromColors(
-                            baseColor: Colors.grey.shade300,
-                            highlightColor: Colors.grey.shade100,
-                            child: Container(
-                              width: Get.width * 0.7,
-                              height: 18,
-                              color: Colors.grey.shade300,
-                            ),
-                          ),
-                          const SizedBox(height: 16),
-                          // Placeholder untuk deskripsi
-                          Shimmer.fromColors(
-                            baseColor: Colors.grey.shade300,
-                            highlightColor: Colors.grey.shade100,
-                            child: Container(
-                              width: Get.width * 0.65,
-                              height: 60,
-                              color: Colors.grey.shade300,
-                            ),
-                          ),
-                          const SizedBox(height: 16),
-                          // Placeholder untuk tanggal
-                          Shimmer.fromColors(
-                            baseColor: Colors.grey.shade300,
-                            highlightColor: Colors.grey.shade100,
-                            child: Container(
-                              width: Get.width * 0.4,
-                              height: 14,
-                              color: Colors.grey.shade300,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                child: const ShimmerCarouselBooks(),
               ),
             ),
           );
@@ -228,3 +161,5 @@ class CarouselNews extends StatelessWidget {
     );
   }
 }
+
+

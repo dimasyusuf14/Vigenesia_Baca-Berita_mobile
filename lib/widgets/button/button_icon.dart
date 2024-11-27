@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 
 class ButtonIcon extends StatelessWidget {
   const ButtonIcon({
-    Key? key,
+    super.key,
     required this.onTap,
     required this.icon, required this.bgcolor, required this.iccolor,
-  }) : super(key: key);
+  });
   final VoidCallback onTap;
   final String icon;
   final Color bgcolor;
